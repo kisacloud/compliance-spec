@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "control",
+  "description": "단일 카탈로그 스냅샷에 종속되며, 기계적 무결성과 원자성을 확보한 순수 정형 통제 항목들의 집합 배열 명세의 틀",
+  "type": "object",
+  "properties": {
+    "catalog_id": {
+      "type": "string",
+      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
+      "description": "본 파일 내부의 모든 통제 항목들이 종속되는 최상위 카탈로그 원장의 마스터 고유 식별 URN 포인터"
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "본 정형 통제 항목 JSON 파일이 준수하는 스키마 버전의 명사 (예: v1)"
+    },
+    "controls": {
+      "type": "array",
+      "description": "카탈로그 하위의 세부 점검 및 통제 기준 객체들을 담은 수평 평탄화 배열",
+      "items": {
+        "type": "object",
+        "properties": {
+          "control_id": {
+            "type": "string",
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:[a-z0-9._-]+$",
+            "description": "통제 항목 개별 객체의 지구상 전역 고유 식별 주소. 무조건 'catalog_id + : + control_no' 형태와 완전히 일치해야 함"
+          },
+          "catalog_id": {
+            "type": "string",
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
+            "description": "상위 소속 카탈로그를 지칭하는 중복 검증용 외래키 필드"
+          },
+          "control_no": {
+            "type": "string",
+            "pattern": "^[a-z0-9._-]+$",
+            "description": "공식 문서상의 통제 조항 고유 번호 체계를 소문자화한 원형 문자열 (예: 1.1.1, ac-2)"
+          },
+          "parent_no": {
+            "type": ["string", "null"],
+            "pattern": "^[a-z0-9._-]+$",
+            "description": "계층적 위계를 추적하기 위해 상위 소분류/중분류 조항 번호를 가리키는 부모 노드 포인터. 최상위 대분류인 경우 null"
+          },
+          "domain": {
+            "type": "string",
+            "description": "해당 통제 항목이 속한 대분류 영역의 행정·정책학적 범주 명칭 (예: 접근통제, 정보보호 정책 및 조직)"
+          },
+          "title": {
+            "type": "string",
+            "description": "통제 조항 번호에 매핑되는 공식 핵심 통제 제목 명사구"
+          },
+          "statement": {
+            "type": "string",
+            "description": "피심사기관이 실제로 이행해야 하는 핵심 보안 요건 본문 문장 원문. 단일 의미론적 사실만 담아야 함"
+          },
+          "extensions": {
+            "type": "object",
+            "description": "표준 공통 스펙 외에 발생하는 가변적 필드 수용을 위한 확장 격리 레이어",
+            "properties": {
+              "framework_meta": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "정부 고시나 공식 기관이 해당 조항에 부속으로 추가 지정한 행정 속성 데이터 방 (예: 심사 가이드 결합 키)"
+              },
+              "tenant_meta": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "플랫폼을 도입한 개별 기업이 자체 운영 편의를 위해 내부 인프라 식별자 등을 바인딩하는 커스텀 데이터 방"
+              }
+            },
+            "required": ["framework_meta", "tenant_meta"],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "control_id",
+          "catalog_id",
+          "control_no",
+          "parent_no",
+          "domain",
+          "title",
+          "statement",
+          "extensions"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["catalog_id", "schema_version", "controls"],
+  "additionalProperties": false
+}
