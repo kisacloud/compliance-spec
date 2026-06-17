@@ -1,4 +1,3 @@
-```markdown
 # Compliance Specification Registry (`compliance-spec`)
 
 본 저장소는 다양한 정보보호 규제(CSAP, ISMS-P 등)의 통제 항목을 기계 가독형(Machine-Readable) 정형 데이터로 통합 관리하기 위한 마스터 레지스트리입니다.
@@ -95,6 +94,3 @@ $$control\_id \equiv catalog\_id + ":control:" + control\_no$$
 2. **소문자 강제:** URN 데이터 필드 내에 단 1글자의 대문자나 비표준 구분자(`#`)가 발견될 경우 CI 빌드가 즉각 기각됩니다.
 3. **참조 무결성 검사:** `control` 내에 기재된 `catalog_ref` 주소가 실제 동일 경로상의 `catalog.json` 내 `catalog_id`와 실재 동치하는지 교차 룩업(Lookup) 검증이 실행됩니다.
 4. **로컬 가용성 지원:** 개발자의 경직성 검증 실패 마찰을 줄이기 위해, 커밋 실행 전 알파벳 대문자를 소문자로 자동 치환 및 정형화 처리를 선제 집행해 주는 헬퍼 스크립트 파일이 `/tools/pre-commit-hook.sh`에 패키징되어 있으므로 로컬 환경에 적용 후 작업을 권장합니다.
-```
-
-```

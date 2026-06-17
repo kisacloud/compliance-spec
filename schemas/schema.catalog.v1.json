@@ -29,15 +29,18 @@
     },
     "publisher": {
       "type": "array",
-      "items": {
-        "type": "string"
-      },
+      "items": { "type": "string" },
       "description": "해당 제도를 관할하고 공표한 주관 정부 부처 및 산하 심사 기관의 목록 명사 배열"
     },
     "catalog_type": {
       "type": "string",
       "enum": ["REGULATORY_FRAMEWORK", "IMPLEMENTATION_GUIDE", "INTERNAL_STANDARD"],
-      "description": "제도의 행정학적 성격 분류 (법적 강제 규제 체계, 이행 가이드라인 가이드, 기업 자체 내부 보안 표준)"
+      "description": "제도의 행정학적 성격 분류"
+    },
+    "governing_law": {
+      "type": ["array", "null"],
+      "items": { "type": "string" },
+      "description": "해당 규제 제도의 발효 근거가 되는 상위 법률 및 시행령 명칭 배열 (국가 강제 규제가 아닐 경우 null 고정)"
     },
     "effective_date": {
       "type": "string",
@@ -47,16 +50,36 @@
     "status": {
       "type": "string",
       "enum": ["ACTIVE", "SUPERSEDED", "DRAFT"],
-      "description": "현재 스냅샷 데이터의 효력 상태 (현재 가동 중, 개정으로 인해 대체됨, 임시 초안 상태)"
+      "description": "현재 스냅샷 데이터의 효력 상태"
     },
     "supersedes": {
       "type": ["string", "null"],
       "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
-      "description": "본 카탈로그가 대체한 직전 버전 카탈로그의 고유 catalog_id URN 주소. 최초 판본일 경우 null 지정"
+      "description": "본 카탈로그가 대체한 직전 버전 카탈로그의 고유 catalog_id URN 주소"
     },
     "description": {
       "type": "string",
-      "description": "해당 판본이 개정된 핵심 취지, 법적 근거, 주요 변경 골자를 기재하는 행정적 요약 해설 텍스트"
+      "description": "해당 판본이 개정된 핵심 취지"
+    },
+    "extensions": {
+      "type": "object",
+      "properties": {
+        "framework_meta": {
+          "type": "array",
+          "description": "제도별 특수 속성 배열 (name-value)",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+              "value": { "type": "string" }
+            },
+            "required": ["name", "value"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["framework_meta"],
+      "additionalProperties": false
     }
   },
   "required": [
@@ -70,7 +93,8 @@
     "effective_date",
     "status",
     "supersedes",
-    "description"
+    "description",
+    "extensions"
   ],
   "additionalProperties": false
 }

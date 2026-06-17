@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schemas/schema.catalog.v1.json",
+  "catalog_id": "urn:grc:kr:csap:2026r01",
+  "catalog_name": "csap",
+  "catalog_version": "2026r01",
+  "title": "클라우드컴퓨팅서비스 보안인증기준",
+  "region_code": "kr",
+  "publisher": [
+    "과학기술정보통신부",
+    "한국인터넷진흥원"
+  ],
+  "catalog_type": "REGULATORY_FRAMEWORK",
+  "effective_date": "2026-01-01",
+  "status": "ACTIVE",
+  "supersedes": "urn:grc:kr:csap:2023r01",
+  "description": "과학기술정보통신부 고시에 의거하여 국가 및 공공기관의 안전한 민간 클라우드컴퓨팅서비스 이용을 보장하기 위해 서비스 유형 및 보안 등급별 다차원 통제 요건을 명시한 GRC 마스터 레지스트리 원장",
+  "extensions": {
+    "framework_meta": [
+      { "name": "csap_service_type", "value": "iaas" },
+      { "name": "csap_service_type", "value": "paas" },
+      { "name": "csap_service_type", "value": "saas" },
+      { "name": "csap_security_tier", "value": "high" },
+      { "name": "csap_security_tier", "value": "medium" },
+      { "name": "csap_security_tier", "value": "low" }
+    ]
+  }
+}

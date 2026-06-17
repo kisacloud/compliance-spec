@@ -30,36 +30,68 @@
         "properties": {
           "source_id": {
             "type": "string",
-            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:[a-z0-9._-]+$",
-            "description": "기준이 되는 소스 통제 항목의 개별 고유 control_urn 주소"
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:control:[a-z0-9._-]+$",
+            "description": "기준이 되는 소스 통제 항목의 개별 고유 control_urn 주소 (:control: 네임스페이스 일치화)"
           },
           "target_id": {
             "type": "string",
-            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:[a-z0-9._-]+$",
-            "description": "매핑 대상이 되는 타깃 통제 항목의 개별 고유 control_urn 주소 (해외 제도 유입 시 global 네임스페이스 대응)"
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:control:[a-z0-9._-]+$",
+            "description": "매핑 대상이 되는 타깃 통제 항목의 개별 고유 control_urn 주소 (:control: 네임스페이스 일치화)"
           },
           "mapping_type": {
             "type": "string",
             "enum": ["EQUIVALENT", "SUPERSET", "SUBSET", "PARTIAL", "RELATED", "NO_EQUIVALENT"],
-            "description": "선언된 매핑 관계의 연산학적 논리 성격 (완전 동치, 소스가 타깃을 포함함, 소스가 타깃의 부분집합임, 일부 교집합 존재, 정성적 연관성만 존재, 완전 불일치)"
+            "description": "선언된 매핑 관계의 연산학적 논리 성격"
           },
           "provenance": {
             "type": "string",
             "enum": ["OFFICIAL_NOTICE", "EXPERT_REVIEWED", "AI_SUGGESTED"],
-            "description": "미래 판단-AI의 환각 제어를 위해 데이터의 신뢰 출처 등급을 강제 분류하는 필드 (정부 공식 법적 고시, 인간 전문가 집단 검증본, LLM/AI 에이전트 생성 최초 제안 초안)"
+            "description": "미래 판단-AI의 환각 제어를 위해 데이터의 신뢰 출처 등급을 강제 분류하는 필드"
           },
           "verification_status": {
             "type": "string",
             "enum": ["VERIFIED", "DRAFT", "REJECTED"],
-            "description": "출처성 자산의 데이터 신뢰 승인 라이프사이클 상태 (최종 승인되어 실효성 가짐, 검토 전 가안 상태, 반려되어 연산 배제됨)"
+            "description": "출처성 자산의 데이터 신뢰 승인 라이프사이클 상태"
           },
           "evidence_ref": {
             "type": ["string", "null"],
-            "description": "provenance가 고시인 경우 관보 고시 번호 및 별표 위치를 명시하고, 전문가인 경우 보고서 서지 정보를 명시하는 공식 팩트 앵커 텍스트"
+            "description": "공식 팩트 앵커 텍스트 (관보 고시 번호, 보고서 서지 정보 등)"
           },
           "rationale": {
             "type": "string",
-            "description": "왜 이러한 상호인정 결론에 도달했는지 규제 주체의 해석이나 AI의 추론 논거문 단락을 그대로 보존하는 운반(Pass-through) 정성 텍스트 필드"
+            "description": "규제 주체의 해석이나 AI의 추론 논거문 단락을 그대로 보존하는 운반 텍스트 필드"
+          },
+          "extensions": {
+            "type": "object",
+            "description": "개별 매핑 행 단위에서 가동되는 제도별/기업별 확장 격리 레이어",
+            "properties": {
+              "framework_meta": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+                    "value": { "type": "string" }
+                  },
+                  "required": ["name", "value"],
+                  "additionalProperties": false
+                }
+              },
+              "tenant_meta": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+                    "value": { "type": "string" }
+                  },
+                  "required": ["name", "value"],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": ["framework_meta", "tenant_meta"],
+            "additionalProperties": false
           }
         },
         "required": [
@@ -69,10 +101,31 @@
           "provenance",
           "verification_status",
           "evidence_ref",
-          "rationale"
+          "rationale",
+          "extensions"
         ],
         "additionalProperties": false
       }
+    },
+    "extensions": {
+      "type": "object",
+      "description": "상관관계 마스터 원장 자체에 부속되는 행정 속성 데이터 레이어",
+      "properties": {
+        "framework_meta": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+              "value": { "type": "string" }
+            },
+            "required": ["name", "value"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["framework_meta"],
+      "additionalProperties": false
     }
   },
   "required": [
@@ -80,7 +133,8 @@
     "source_catalog_id",
     "target_catalog_id",
     "schema_version",
-    "mappings"
+    "mappings",
+    "extensions"
   ],
   "additionalProperties": false
 }
