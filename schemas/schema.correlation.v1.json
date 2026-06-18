@@ -6,7 +6,7 @@
   "properties": {
     "correlation_id": {
       "type": "string",
-      "description": "상관관계 명세 파일 자체의 고유 식별자. 소스 카탈로그 ID와 타깃 카탈로그 ID의 텍스트를 조합하여 사출"
+      "description": "상관관계 명세 파일 자체의 고유 식별자. 소스 카탈로그 URN과 타깃 카탈로그 URN 문자열을 조합하여 생성 (예: urn:grc:kr:csap:2026r01__kr:isms-p:2026r00)"
     },
     "source_catalog_id": {
       "type": "string",
@@ -20,7 +20,7 @@
     },
     "schema_version": {
       "type": "string",
-      "description": "본 상관관계 명세가 따르는 설계도 버전 (예: v1)"
+      "description": "본 상관관계 명세 JSON 파일이 준수하는 스키마 버전 (예: v1)"
     },
     "mappings": {
       "type": "array",
@@ -31,12 +31,12 @@
           "source_id": {
             "type": "string",
             "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:control:[a-z0-9._-]+$",
-            "description": "기준이 되는 소스 통제 항목의 개별 고유 control_urn 주소 (:control: 네임스페이스 일치화)"
+          "description": "기준이 되는 소스 통제 항목의 개별 고유 URN 주소 (:control: 네임스페이스 일치화)"
           },
           "target_id": {
             "type": "string",
             "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:control:[a-z0-9._-]+$",
-            "description": "매핑 대상이 되는 타깃 통제 항목의 개별 고유 control_urn 주소 (:control: 네임스페이스 일치화)"
+          "description": "매핑 대상이 되는 타깃 통제 항목의 개별 고유 URN 주소 (:control: 네임스페이스 일치화)"
           },
           "mapping_type": {
             "type": "string",

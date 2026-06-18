@@ -21,24 +21,43 @@
         "properties": {
           "control_id": {
             "type": "string",
-            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:[a-z0-9._-]+$",
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:control:[a-z0-9._-]+$",
             "description": "통제 항목 개별 객체의 지구상 전역 고유 식별 주소"
           },
           "catalog_id": {
             "type": "string",
-            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$"
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
+            "description": "본 통제 항목이 소속된 부모 카탈로그의 고유 URN"
           },
           "control_no": {
             "type": "string",
-            "pattern": "^[a-z0-9._-]+$"
+            "pattern": "^[a-z0-9._-]+$",
+            "description": "통제 항목의 고유 번호 (예: 1.1.1, 1.1.1_a). 복합 요구사항 분할 시 언더바(_) 사용을 권장함"
+          },
+          "base_no": {
+            "type": "string",
+            "pattern": "^[a-z0-9._-]+$",
+            "description": "행정 고시 상의 공식 조항 번호. 조건부 행 분할(Row Splitting) 시 파생 항목들을 논리적으로 그룹핑(GROUP BY)하기 위한 기준 키"
           },
           "parent_no": {
             "type": ["string", "null"],
-            "pattern": "^[a-z0-9._-]+$"
+            "pattern": "^[a-z0-9._-]+$",
+            "description": "계층 구조를 역추적하기 위한 상위 통제 항목 번호. 최상위 통제일 경우 null 지정"
           },
-          "domain": { "type": "string" },
-          "title": { "type": "string" },
-          "statement": { "type": "string" },
+          "parent_title": {
+            "type": ["string", "null"],
+            "description": "상위 통제 항목(그룹/도메인 등)의 명칭. 기계 연산 및 AI 컨텍스트 유지를 위한 반정규화(Denormalization) 필드"
+          },
+          "domain_no": {
+            "type": ["string", "null"],
+            "description": "해당 통제가 속한 최상위 대분류 영역 또는 도메인의 고유 번호"
+          },
+          "domain_title": {
+            "type": ["string", "null"],
+            "description": "해당 통제가 속한 최상위 대분류 영역 또는 도메인의 공식 명칭"
+          },
+          "title": { "type": "string", "description": "통제 항목의 공식 제목 및 명칭" },
+          "statement": { "type": "string", "description": "기계적 이진 판단(Pass/Fail)이 가능하도록 원자적으로 분해된 통제 요구사항 평문" },
           "extensions": {
             "type": "object",
             "properties": {
@@ -77,8 +96,11 @@
           "control_id",
           "catalog_id",
           "control_no",
+          "base_no",
           "parent_no",
-          "domain",
+          "parent_title",
+          "domain_no",
+          "domain_title",
           "title",
           "statement",
           "extensions"

@@ -6,7 +6,7 @@
   "properties": {
     "changelog_id": {
       "type": "string",
-      "description": "변경로그 파일 자체의 고유 식별자. 구버전 카탈로그 ID와 신버전 카탈로그 ID 문자열을 합성"
+      "description": "변경로그 파일의 고유 식별자. 구버전 카탈로그 URN과 신버전 카탈로그 URN을 조합한 문자열 (예: urn:grc:kr:csap:2023r01__kr:csap:2026r01)"
     },
     "source_catalog_id": {
       "type": "string",
@@ -16,7 +16,7 @@
     "target_catalog_id": {
       "type": "string",
       "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
-      "description": "개정 후 현신버전 카탈로그의 고유 URN 주소 포인터"
+      "description": "개정 후 신버전 카탈로그의 고유 URN 주소 포인터"
     },
     "changes": {
       "type": "array",
@@ -32,7 +32,7 @@
           "target_control_id": {
             "type": ["string", "null"],
             "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:control:[a-z0-9._-]+$",
-            "description": "개정 후 현버전 통제 항목의 개별 고유 URN 주소. (:control: 네임스페이스 동치화)"
+            "description": "개정 후 신버전 통제 항목의 개별 고유 URN 주소. (:control: 네임스페이스 동치화)"
           },
           "status_code": {
             "type": "string",

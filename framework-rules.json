@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "description": "JSON 스키마가 통제하지 못하는 확장 필드의 비즈니스 논리 및 허용 명사를 검증하는 CI 파이프라인 전용 정적 룰셋",
+  "frameworks": {
+    "csap": {
+      "allowed_framework_meta_names": [
+        "level_low",
+        "level_standard",
+        "level_simple",
+        "service_iaas",
+        "service_paas",
+        "service_saas",
+        "service_daas"
+      ],
+      "required_framework_meta_names": []
+    },
+    "isms-p": {
+      "allowed_framework_meta_names": [
+        "certification_scope",
+        "applicable_domain"
+      ],
+      "required_framework_meta_names": []
+    }
+  }
+}

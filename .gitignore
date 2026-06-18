@@ -1,0 +1,6 @@
+# Untracked working directories
+/working/
+
+# Python Cache
+__pycache__/
+*.pyc
