@@ -20,12 +20,13 @@
   "description": "과학기술정보통신부 고시에 의거하여 국가 및 공공기관의 안전한 민간 클라우드컴퓨팅서비스 이용을 보장하기 위해 서비스 유형 및 보안 등급별 통제 요건을 명시한 규제 카탈로그",
   "extensions": {
     "framework_meta": [
-      { "name": "csap_service_type", "value": "iaas" },
-      { "name": "csap_service_type", "value": "paas" },
-      { "name": "csap_service_type", "value": "saas" },
-      { "name": "csap_security_tier", "value": "high" },
-      { "name": "csap_security_tier", "value": "medium" },
-      { "name": "csap_security_tier", "value": "low" }
+      { "name": "service_iaas", "value": "true" },
+      { "name": "service_paas", "value": "true" },
+      { "name": "service_saas", "value": "true" },
+      { "name": "service_daas", "value": "true" },
+      { "name": "level_standard", "value": "true" },
+      { "name": "level_simple", "value": "true" },
+      { "name": "level_low", "value": "true" }
     ]
   }
 }
