@@ -1,72 +1,77 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kisacloud.github.io/compliance-spec/schemas/schema.catalog.v1.json",
   "title": "catalog",
-  "description": "특정 규제 또는 가이드라인의 최상위 메타데이터 및 제도의 식별 정보를 정의하는 마스터 스키마",
+  "description": "하나의 규제 제도 판본(version snapshot)의 최상위 메타데이터를 정의하는 마스터 스키마. 한 catalog는 특정 시점에 발효된 불변 스냅샷이며, 개정이 일어나면 이 파일을 수정하지 않고 새 버전의 catalog를 별도로 만들고 changelog로 두 버전을 잇는다. 주의: 데이터 인스턴스(catalog.{version}.json)에는 '$schema' 키를 넣지 않는다. 본 스키마가 additionalProperties:false이므로 인스턴스에 메타스키마 포인터를 넣으면 검증이 실패한다. 집계 메타값(총 통제 수, 분야 수 등)은 control 데이터에서 파생 가능하므로 본문에 중복 저장하지 않으며, 부득이 framework_meta에 둘 경우 CI가 control 데이터와의 일치를 강제한다.",
   "type": "object",
   "properties": {
     "catalog_id": {
       "type": "string",
-      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
-      "description": "규제 정의 카탈로그의 고유 식별 URN (예: urn:grc:kr:csap:2026r01)"
+      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*$",
+      "description": "규제 카탈로그의 고유 식별 URN. 포맷은 urn:grc:{region}:{framework}:{version} (예: urn:grc:kr:csap:2026r1). 전체 소문자."
     },
     "catalog_name": {
       "type": "string",
-      "description": "인증제도 또는 보안 규격의 공식 약어 명칭 (예: csap, isms-p, iso27001)"
+      "pattern": "^[a-z0-9-]+$",
+      "description": "제도의 공식 약어(소문자). catalog_id의 framework 세그먼트와 일치한다 (예: csap, isms-p, iso27001)."
     },
     "catalog_version": {
       "type": "string",
-      "pattern": "^[0-9]{4}r[0-9]{2}$",
-      "description": "행정적 개정 연도와 차수를 결합하여 단조 정렬이 가능하도록 설계된 버전 코드 (예: 2026r01)"
+      "pattern": "^[0-9]{4}r[1-9][0-9]*$",
+      "description": "개정 연도 4자리 + 'r' + 차수 2자리. 자리수를 고정하여 문자열 정렬만으로 시간순 단조 정렬이 보장된다 (예: 2026r1 < 2026r2 < 2027r1). catalog_id의 version 세그먼트와 일치한다."
     },
     "region_code": {
       "type": "string",
       "pattern": "^(?:[a-z]{2}|global)$",
-      "description": "ISO 3166-1 기준의 관할권 국가 코드 또는 전 세계 통용 규격일 경우 global (완전 소문자 강제)"
+      "description": "ISO 3166-1 alpha-2 관할권 국가 코드(소문자), 또는 국제 통용 규격이면 'global'. catalog_id의 region 세그먼트와 일치한다."
     },
     "title": {
       "type": "string",
-      "description": "규제 기관이 발간한 고시 표준 가이드라인 해설서의 공식 전체 타이틀 텍스트"
+      "minLength": 1,
+      "description": "규제 기관이 발간한 고시/해설서의 공식 전체 명칭"
     },
     "publisher": {
       "type": "array",
       "items": { "type": "string" },
-      "description": "해당 제도를 관할하고 공표한 주관 정부 부처 및 산하 심사 기관의 목록 배열"
+      "minItems": 1,
+      "description": "제도를 관할·공표한 주관 부처 및 산하 기관 명칭 배열"
     },
     "catalog_type": {
       "type": "string",
       "enum": ["REGULATORY_FRAMEWORK", "IMPLEMENTATION_GUIDE", "INTERNAL_STANDARD"],
-      "description": "제도의 행정학적 성격 분류"
+      "description": "제도의 성격. REGULATORY_FRAMEWORK=법령 근거 강제 규제, IMPLEMENTATION_GUIDE=권고 가이드/해설서, INTERNAL_STANDARD=기관 내부 표준."
     },
     "governing_law": {
       "type": ["array", "null"],
       "items": { "type": "string" },
-      "description": "해당 규제 제도의 발효 근거가 되는 상위 법률 및 시행령 명칭 배열 (국가 강제 규제가 아닐 경우 null 고정)"
+      "description": "제도 발효의 근거가 되는 상위 법률·시행령·고시 명칭 배열. 법적 강제 규제가 아니면(가이드 등) null. catalog_type이 REGULATORY_FRAMEWORK이면 비어 있지 않은 배열이어야 한다."
     },
     "effective_date": {
       "type": "string",
       "format": "date",
-      "description": "해당 판본의 규제가 법리적 혹은 행정적으로 실제 발효 및 시행된 공식 날짜 (YYYY-MM-DD)"
+      "description": "본 판본이 실제 발효·시행된 날짜 (YYYY-MM-DD)"
     },
     "status": {
       "type": "string",
       "enum": ["ACTIVE", "SUPERSEDED", "DRAFT"],
-      "description": "현재 스냅샷 데이터의 효력 상태"
+      "description": "스냅샷의 효력 상태. ACTIVE=현행 유효, SUPERSEDED=후속 판본으로 대체됨, DRAFT=발효 전 초안."
     },
     "supersedes": {
       "type": ["string", "null"],
-      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
-      "description": "본 카탈로그가 대체한 직전 버전 카탈로그의 고유 catalog_id URN 주소"
+      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*$",
+      "description": "본 판본이 대체한 직전 판본의 catalog_id. 최초 판본이면 null. 두 판본의 통제 단위 차분은 changelog 파일이 담는다."
     },
     "description": {
       "type": "string",
-      "description": "해당 판본이 개정된 핵심 취지"
+      "description": "본 판본의 구성 개요 및 개정 취지에 대한 서술"
     },
     "extensions": {
       "type": "object",
+      "description": "가변 행정 속성의 격리 레이어. 모든 값은 중립 name-value 배열이며 허용 name은 framework-rules.json에서 통제한다.",
       "properties": {
         "framework_meta": {
           "type": "array",
-          "description": "제도별 특수 속성 배열 (name-value)",
+          "description": "제도별 행정 메타 속성 배열(name-value). control 데이터에서 파생 가능한 집계값(예: total_controls)을 여기에 둘 경우, CI가 실제 control 수와의 일치를 강제한다.",
           "items": {
             "type": "object",
             "properties": {
@@ -90,6 +95,7 @@
     "title",
     "publisher",
     "catalog_type",
+    "governing_law",
     "effective_date",
     "status",
     "supersedes",

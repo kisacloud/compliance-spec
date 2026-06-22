@@ -1,69 +1,71 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kisacloud.github.io/compliance-spec/schemas/schema.correlation.v1.json",
   "title": "correlation",
-  "description": "정부 고시 및 전문가 선언에 기반하여 상호 제도 간 동형 인정 및 정성적 연관 관계의 출처성(Provenance)을 통제하는 스키마",
+  "description": "서로 다른 두 제도(카탈로그) 사이의 상호 인정·면제·연관 관계를 선언하는 스키마. '느슨한 결합' 원칙에 따라 통제 데이터 자체는 다른 제도의 존재를 모르며, 제도 간 관계는 오직 이 외부 레이어에서 플러그인처럼 조립된다. 실제 관계는 원자 필드인 source_catalog_id/target_catalog_id 및 각 매핑 행의 source_id/target_id가 담는다. correlation_id는 파일을 식별하는 불투명(opaque) 라벨일 뿐 파싱 대상이 아니다.",
   "type": "object",
   "properties": {
     "correlation_id": {
       "type": "string",
-      "description": "상관관계 명세 파일 자체의 고유 식별자. 소스 카탈로그 URN과 타깃 카탈로그 URN 문자열을 조합하여 생성 (예: urn:grc:kr:csap:2026r01__kr:isms-p:2026r00)"
+      "description": "상관관계 파일의 고유 식별 라벨. 관례상 두 카탈로그 URN을 '__'로 이어 생성하지만(예: urn:grc:kr:csap:2026r1__kr:isms-p:2026r1), 이 문자열은 파싱하여 의미를 추출하는 용도가 아니다. 제도 간 관계는 아래 source_catalog_id/target_catalog_id 원자 필드를 사용한다. 유일성만 보장하면 된다."
     },
     "source_catalog_id": {
       "type": "string",
-      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
-      "description": "상호 인정 판단의 기준(출발점)이 되는 주체 프레임워크의 고유 카탈로그 URN 포인터"
+      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*$",
+      "description": "상호 인정 판단의 기준(출발점)이 되는 카탈로그의 고유 URN"
     },
     "target_catalog_id": {
       "type": "string",
-      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
-      "description": "소스 컴플라이언스를 통해 면제받거나 비교 대상이 되는 타깃 프레임워크의 고유 카탈로그 URN 포인터"
+      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*$",
+      "description": "기준 제도와 비교·매핑되는 대상 카탈로그의 고유 URN"
     },
     "schema_version": {
       "type": "string",
-      "description": "본 상관관계 명세 JSON 파일이 준수하는 스키마 버전 (예: v1)"
+      "pattern": "^v[0-9]+$",
+      "description": "본 파일이 준수하는 correlation 스키마 버전 (예: v1)"
     },
     "mappings": {
       "type": "array",
-      "description": "기준 조항과 타깃 조항 간의 선언적 상호 인정 관계 매트릭스 배열",
+      "description": "기준 통제와 대상 통제 간의 선언적 관계 행 배열",
       "items": {
         "type": "object",
         "properties": {
           "source_id": {
             "type": "string",
-            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:control:[a-z0-9._-]+$",
-          "description": "기준이 되는 소스 통제 항목의 개별 고유 URN 주소 (:control: 네임스페이스 일치화)"
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*:control:[a-z0-9._-]+$",
+            "description": "기준이 되는 소스 통제 항목의 control_id. 반드시 ':control:' 네임스페이스를 포함한다."
           },
           "target_id": {
             "type": "string",
-            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:control:[a-z0-9._-]+$",
-          "description": "매핑 대상이 되는 타깃 통제 항목의 개별 고유 URN 주소 (:control: 네임스페이스 일치화)"
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*:control:[a-z0-9._-]+$",
+            "description": "매핑 대상이 되는 타깃 통제 항목의 control_id. 반드시 ':control:' 네임스페이스를 포함한다."
           },
           "mapping_type": {
             "type": "string",
             "enum": ["EQUIVALENT", "SUPERSET", "SUBSET", "PARTIAL", "RELATED", "NO_EQUIVALENT"],
-            "description": "선언된 매핑 관계의 연산학적 논리 성격"
+            "description": "관계의 논리적 성격. EQUIVALENT=동등, SUPERSET=소스가 타깃을 포함, SUBSET=소스가 타깃에 포함됨, PARTIAL=부분 중첩, RELATED=관련은 있으나 포함관계 아님, NO_EQUIVALENT=대응 없음. (NIST OLIR 등 국제 매핑 어휘와 정렬되도록 중립 영어를 사용한다.)"
           },
           "provenance": {
             "type": "string",
             "enum": ["OFFICIAL_NOTICE", "EXPERT_REVIEWED", "AI_SUGGESTED"],
-            "description": "미래 판단-AI의 환각 제어를 위해 데이터의 신뢰 출처 등급을 강제 분류하는 필드"
+            "description": "이 매핑 주장의 출처 신뢰 등급. OFFICIAL_NOTICE=관보·고시 등 공식 근거, EXPERT_REVIEWED=전문가 검토, AI_SUGGESTED=AI 자동 제안(미검증). AI가 생성한 매핑이 공식 근거와 뒤섞여 후속 판단의 참값으로 오용되는 것을 막기 위해 행마다 강제 기재한다."
           },
           "verification_status": {
             "type": "string",
             "enum": ["VERIFIED", "DRAFT", "REJECTED"],
-            "description": "출처성 자산의 데이터 신뢰 승인 라이프사이클 상태"
+            "description": "데이터 신뢰 라이프사이클 상태. VERIFIED=검증 완료, DRAFT=검토 중, REJECTED=기각됨."
           },
           "evidence_ref": {
             "type": ["string", "null"],
-            "description": "공식 팩트 앵커 텍스트 (관보 고시 번호, 보고서 서지 정보 등)"
+            "description": "주장을 뒷받침하는 공식 근거 앵커(관보 고시 번호, 보고서 서지정보 등). 근거가 없으면 null."
           },
           "rationale": {
             "type": "string",
-            "description": "규제 주체의 해석이나 AI의 추론 논거문 단락을 그대로 보존하는 운반 텍스트 필드"
+            "description": "관계 판단의 해석/논거 서술. 규제 주체의 해석문이나 AI 추론 근거를 보존한다."
           },
           "extensions": {
             "type": "object",
-            "description": "개별 매핑 행 단위에서 가동되는 제도별/기업별 확장 격리 레이어",
+            "description": "개별 매핑 행 단위의 가변 속성 격리 레이어",
             "properties": {
               "framework_meta": {
                 "type": "array",
@@ -109,7 +111,7 @@
     },
     "extensions": {
       "type": "object",
-      "description": "상관관계 마스터 원장 자체에 부속되는 행정 속성 데이터 레이어",
+      "description": "상관관계 파일 자체에 부속되는 가변 속성 레이어",
       "properties": {
         "framework_meta": {
           "type": "array",

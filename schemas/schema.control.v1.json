@@ -1,94 +1,156 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kisacloud.github.io/compliance-spec/schemas/schema.control.v1.json",
   "title": "control",
-  "description": "단일 카탈로그 스냅샷에 종속되며, 기계적 무결성과 원자성을 확보한 순수 정형 통제 항목들의 집합 배열 명세의 틀",
+  "description": "단일 카탈로그 스냅샷(catalog_id 하나)에 종속되는 통제 항목들의 집합. 모든 통제는 트리(중첩)가 아니라 단층 평탄 배열로 적재되며, 각 항목은 기계적 이진 판단(Pass/Fail)이 가능한 원자적 단위를 지향한다. control은 규범(norm)만 담는다 — 판정 대상인 statement와 식별/분류/적용 메타만 둔다. 안내서의 해설성 자료(주요 확인사항/세부 설명/증거자료/결함사례)는 control이 아니라 별도 guidance 레이어에 두고 control_id로 연결한다. 분류 계층(영역/분야)은 OSCAL의 group 중첩을 평탄 배열로 투영한 반정규화 필드(domain_*, group_*)로 복원하고, 비원자 통제의 구조 분할과 등급별 변형은 base_no + split_type 축으로 직교 표현한다. 상세 설계 근거와 작성 규칙은 저장소 README를 참조한다.",
   "type": "object",
   "properties": {
     "catalog_id": {
       "type": "string",
-      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
-      "description": "본 파일 내부의 모든 통제 항목들이 종속되는 최상위 카탈로그 원장의 마스터 고유 식별 URN 포인터"
+      "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*$",
+      "description": "본 파일의 모든 통제 항목이 종속되는 마스터 카탈로그의 고유 URN. 파일 내 모든 controls[].catalog_id 값과 동일해야 한다."
     },
     "schema_version": {
       "type": "string",
-      "description": "본 정형 통제 항목 JSON 파일이 준수하는 스키마 버전의 명사 (예: v1)"
+      "pattern": "^v[0-9]+$",
+      "description": "본 JSON 파일이 준수하는 control 스키마의 메이저 버전 (예: v1)"
     },
     "controls": {
       "type": "array",
-      "description": "카탈로그 하위의 세부 점검 및 통제 기준 객체들을 담은 수평 평탄화 배열",
+      "description": "카탈로그 하위 통제 항목 객체들의 단층 평탄 배열. 분류 계층은 중첩이 아니라 각 항목의 domain_*/group_* 반정규화 필드로 표현된다.",
       "items": {
         "type": "object",
         "properties": {
           "control_id": {
             "type": "string",
-            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:control:[a-z0-9._-]+$",
-            "description": "통제 항목 개별 객체의 지구상 전역 고유 식별 주소"
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*:control:[a-z0-9._-]+$",
+            "description": "통제 항목의 전역 고유 식별 URN. 반드시 catalog_id + ':control:' + control_no 와 정확히 일치해야 한다(참조 무결성). 콜론(:)만 구분자로 쓰므로 split(':')로 무손실 분해된다."
           },
           "catalog_id": {
             "type": "string",
-            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$",
-            "description": "본 통제 항목이 소속된 부모 카탈로그의 고유 URN"
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*$",
+            "description": "본 통제가 소속된 카탈로그의 고유 URN. 파일 최상위 catalog_id와 동일해야 한다."
           },
           "control_no": {
             "type": "string",
             "pattern": "^[a-z0-9._-]+$",
-            "description": "통제 항목의 고유 번호 (예: 1.1.1, 1.1.1_a). 복합 요구사항 분할 시 언더바(_) 사용을 권장함"
+            "description": "통제 항목의 고유 번호. 분할이 없는 원자 통제는 행정 고시 원본 번호와 동일하다(예: 1.1.1). 비원자 통제를 여러 확인점으로 분할한 경우 또는 등급별 변형을 만든 경우, base_no 뒤에 접미사를 붙여 구분한다(구조 분할 예: 1.1.1_a, 1.1.1_b / 등급 변형 예: 12.3.1_low). 같은 파일 내에서 유일해야 한다."
           },
           "base_no": {
             "type": "string",
             "pattern": "^[a-z0-9._-]+$",
-            "description": "행정 고시 상의 공식 조항 번호. 조건부 행 분할(Row Splitting) 시 파생 항목들을 논리적으로 그룹핑(GROUP BY)하기 위한 기준 키"
+            "description": "행정 고시 원문의 공식 조항 번호. 한 고시 조항에서 파생된 모든 행(구조 분할 형제, 등급 변형 형제)을 하나로 묶는 그룹핑 키다. 분할이 없으면 control_no와 동일하다. 'base_no가 같다 = 동일 고시 조항에서 나왔다'를 의미하며, split_type과 함께 형제 간 관계를 결정론적으로 복원하는 데 쓰인다."
           },
-          "parent_no": {
-            "type": ["string", "null"],
-            "pattern": "^[a-z0-9._-]+$",
-            "description": "계층 구조를 역추적하기 위한 상위 통제 항목 번호. 최상위 통제일 경우 null 지정"
+          "split_type": {
+            "type": "string",
+            "enum": [
+              "ATOMIC",
+              "COMPOSITE",
+              "OVERLAY"
+            ],
+            "description": "이 행이 base_no 그룹 안에서 갖는 성격. ATOMIC=분할되지 않은 단일 통제(base_no == control_no). COMPOSITE=한 고시 조항이 여러 독립 확인점으로 '구조 분할'된 형제 중 하나(형제들은 AND로 함께 평가, OSCAL의 control 내 다중 part에 대응). OVERLAY=같은 조항을 인증등급·적용범위에 따라 '내용 변형'한 형제 중 하나(statement 문안 자체가 등급별로 달라지는 경우, OSCAL의 profile/baseline에 대응). 구조 분할(COMPOSITE)과 내용 변형(OVERLAY)은 직교하는 별개 축이므로 한 값에 섞지 않는다. 한 통제가 분할이면서 변형이기도 한 복합 케이스는, 변형 축을 base_no+split_type=OVERLAY로 두고 구조 분할은 framework_meta 플래그로 표기하여 분리한다."
           },
-          "parent_title": {
-            "type": ["string", "null"],
-            "description": "상위 통제 항목(그룹/도메인 등)의 명칭. 기계 연산 및 AI 컨텍스트 유지를 위한 반정규화(Denormalization) 필드"
+          "overlay_of": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*:control:[a-z0-9._-]+$",
+            "description": "split_type이 OVERLAY인 경우, 이 변형이 파생된 원본(기준) 통제의 control_id. 변형 관계를 명시적 참조로 고정한다. OVERLAY가 아니면 null. (구조 분할 COMPOSITE 형제 간에는 사용하지 않으며, 그 관계는 base_no 공유로 표현한다.)"
           },
           "domain_no": {
-            "type": ["string", "null"],
-            "description": "해당 통제가 속한 최상위 대분류 영역 또는 도메인의 고유 번호"
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-z0-9._-]+$",
+            "description": "통제가 속한 최상위 대분류(영역)의 번호. OSCAL group 계층의 최상위 레벨을 평탄 투영한 분류 라벨이며, 통제 참조가 아니다(참조 무결성 검사 대상 아님). 분류 미상일 경우에만 null."
           },
           "domain_title": {
-            "type": ["string", "null"],
-            "description": "해당 통제가 속한 최상위 대분류 영역 또는 도메인의 공식 명칭"
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "domain_no에 대응하는 대분류(영역)의 공식 명칭. 반정규화 필드로, 같은 domain_no에는 항상 같은 domain_title이 와야 한다(CI 일관성 강제)."
           },
-          "title": { "type": "string", "description": "통제 항목의 공식 제목 및 명칭" },
-          "statement": { "type": "string", "description": "기계적 이진 판단(Pass/Fail)이 가능하도록 원자적으로 분해된 통제 요구사항 평문" },
+          "group_no": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-z0-9._-]+$",
+            "description": "통제가 속한 중간 분류(분야)의 번호(예: 1.1). OSCAL group 계층의 중간 레벨을 평탄 투영한 분류 라벨이며, 상위 '통제'에 대한 참조가 아니다(따라서 control_id 참조 무결성 검사에서 제외된다). 분류가 없는 최상위 항목일 경우 null. 향후 분류 계층을 별도 group 블록으로 정규화할 때 외래 키(FK) 역할을 할 수 있는 안정 키다."
+          },
+          "group_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "group_no에 대응하는 중간 분류(분야)의 공식 명칭. 반정규화 필드로, 같은 group_no에는 항상 같은 group_title이 와야 한다(CI 일관성 강제). 번호는 control_no에서 파생 가능하나 명칭은 파생 불가하므로, 이 필드가 반정규화의 실질적 가치다."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "통제 항목의 공식 제목. 비어 있거나 접속사/문장부호로 끊긴 추출 오류(예: '변경 탐지 및', '.')가 없어야 한다(CI 품질 검사 대상)."
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1,
+            "description": "통제 요구사항 평문. 기계적 이진 판단(Pass/Fail)이 가능하도록 원자적으로 분해된 단위를 지향한다. 한 고시 조항이 복수의 독립 의무를 담고 있어 한 문장으로 Pass/Fail이 어려운 경우, 구조 분할(split_type=COMPOSITE, base_no 공유)로 행을 나누어 각 statement를 원자화한다."
+          },
           "extensions": {
             "type": "object",
+            "description": "스키마 본체로 강제하지 않는 가변 속성의 격리 레이어. 모든 항목은 중립적 name-value 배열 구조이며, 허용 name 사전은 framework-rules.json(CI 2차 검증)에서 통제한다.",
             "properties": {
               "framework_meta": {
                 "type": "array",
-                "description": "정부 고시/기관 지정 행정 속성 데이터 배열",
+                "description": "정부 고시·기관 지정에서 비롯된 행정/적용 속성 배열. 다차원 적용 여부(인증제도 멤버십, 보안 등급, 서비스 유형 등)는 기계적 이진 판별이 가능하도록 여기에 직교 분리된 boolean 플래그 형태(value는 'true'/'false' 문자열)로 적재한다. 예: 인증제도 멤버십 {name:'applies_to_isms', value:'true'} / {name:'applies_to_isms-p', value:'true'}; 보안 등급 {name:'level_low', value:'true'}; 서비스 유형 {name:'service_saas', value:'true'}. 해설성 자료(checklist/detail/evidence/defect)는 여기에 넣지 않으며 guidance 레이어로 분리한다. 허용 name은 framework-rules.json이 통제한다.",
                 "items": {
                   "type": "object",
                   "properties": {
-                    "name": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
-                    "value": { "type": "string" }
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9_-]+$",
+                      "description": "framework-rules.json의 allowed 사전에 등재된 속성명만 허용된다."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "단일 값. boolean 플래그의 경우 'true' 또는 'false' 문자열을 사용한다."
+                    }
                   },
-                  "required": ["name", "value"],
+                  "required": [
+                    "name",
+                    "value"
+                  ],
                   "additionalProperties": false
                 }
               },
               "tenant_meta": {
                 "type": "array",
-                "description": "기업 자체 운영/인프라 매핑 데이터 배열",
+                "description": "기준 데이터가 아닌, 개별 도입 기업의 운영/인프라 매핑용 임의 속성 배열. 레지스트리의 공식 기준값에는 비워 두며([]), 소비 측에서 자유롭게 활용한다.",
                 "items": {
                   "type": "object",
                   "properties": {
-                    "name": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
-                    "value": { "type": "string" }
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9_-]+$"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["name", "value"],
+                  "required": [
+                    "name",
+                    "value"
+                  ],
                   "additionalProperties": false
                 }
               }
             },
-            "required": ["framework_meta", "tenant_meta"],
+            "required": [
+              "framework_meta",
+              "tenant_meta"
+            ],
             "additionalProperties": false
           }
         },
@@ -97,10 +159,12 @@
           "catalog_id",
           "control_no",
           "base_no",
-          "parent_no",
-          "parent_title",
+          "split_type",
+          "overlay_of",
           "domain_no",
           "domain_title",
+          "group_no",
+          "group_title",
           "title",
           "statement",
           "extensions"
@@ -109,6 +173,10 @@
       }
     }
   },
-  "required": ["catalog_id", "schema_version", "controls"],
+  "required": [
+    "catalog_id",
+    "schema_version",
+    "controls"
+  ],
   "additionalProperties": false
 }

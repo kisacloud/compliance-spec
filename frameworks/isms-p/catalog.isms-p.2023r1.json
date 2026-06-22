@@ -1,0 +1,50 @@
+{
+  "catalog_id": "urn:grc:kr:isms-p:2023r1",
+  "catalog_name": "isms-p",
+  "catalog_version": "2023r1",
+  "region_code": "kr",
+  "title": "정보보호 및 개인정보보호 관리체계(ISMS-P) 인증기준 안내서",
+  "publisher": [
+    "과학기술정보통신부",
+    "개인정보보호위원회",
+    "한국인터넷진흥원"
+  ],
+  "catalog_type": "REGULATORY_FRAMEWORK",
+  "governing_law": [
+    "정보통신망 이용촉진 및 정보보호 등에 관한 법률 제47조",
+    "개인정보 보호법 제32조의2",
+    "정보보호 및 개인정보보호 관리체계 인증 등에 관한 고시(과학기술정보통신부고시 제2023-33호, 개인정보보호위원회고시 제2023-8호)"
+  ],
+  "effective_date": "2023-11-01",
+  "status": "ACTIVE",
+  "supersedes": null,
+  "description": "ISMS-P 인증기준 안내서 2023.11 개정판 기반 단일 통제 풀. 3개 영역 21개 분야 101개 인증기준. ISMS(정보보호 관리체계)가 기본 모집단(1·2영역 80개)이며, ISMS-P는 여기에 개인정보 처리 영역(3영역 21개)을 더해 확장한 집합(101개)이다. 두 제도는 별도 카탈로그가 아니라 본 풀의 통제별 멤버십 플래그(applies_to_isms / applies_to_isms-p)로 구분된다.",
+  "extensions": {
+    "framework_meta": [
+      {
+        "name": "total_controls",
+        "value": "101"
+      },
+      {
+        "name": "isms_controls",
+        "value": "80"
+      },
+      {
+        "name": "isms_p_only_controls",
+        "value": "21"
+      },
+      {
+        "name": "domain_count",
+        "value": "3"
+      },
+      {
+        "name": "field_count",
+        "value": "21"
+      },
+      {
+        "name": "source_url",
+        "value": "https://isms-p.kisa.or.kr"
+      }
+    ]
+  }
+}

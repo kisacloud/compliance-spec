@@ -1,6 +1,30 @@
 {
-  "version": "1.0",
-  "description": "JSON 스키마가 통제하지 못하는 확장 필드의 비즈니스 논리 및 허용 명사를 검증하는 CI 파이프라인 전용 정적 룰셋",
+  "version": "1.4",
+  "description": "JSON 스키마가 통제하지 못하는 확장 필드(extensions.framework_meta)의 허용 명사와 비즈니스 규칙을 검증하는 CI 파이프라인 전용 정적 룰셋. allowed_framework_meta_names에 없는 name이 유입되면 빌드를 기각한다. flag 계열 name의 value는 'true'/'false' 문자열만 허용한다.",
+  "conventions": {
+    "file_naming": "데이터 파일은 frameworks/{제도}/ 또는 correlations/ 폴더 아래 두되, 파일명에도 제도명과 버전을 표기한다(예: catalog.isms-p.2023r1.json, control.csap.2026r1.json, guidance.isms-p.2023r1.json). 폴더가 제도를 구분하더라도 파일이 경로와 분리되어 단독 유통(diff, PR, 첨부, 검색)될 때 자기설명적이도록, 경로 정보를 파일명에 의도적으로 반복한다. 두 제도를 잇는 파일은 양쪽을 '__'로 표기한다(예: correlation.csap.2026r1__isms-p.2023r1.json). 버전 숫자는 발효 스냅샷이 확정되면 의미를 가지며, 작업 단계의 잠정 데이터는 catalog_id 내부 버전과 일치시키되 파일명 버전은 잠정값을 따른다.",
+    "membership_flag_prefix": "applies_to_",
+    "level_flag_prefix": "level_",
+    "service_flag_prefix": "service_",
+    "flag_value_domain": [
+      "true",
+      "false"
+    ],
+    "flag_name_is_opaque_string": "framework_meta의 모든 name(특히 하이픈을 포함하는 applies_to_isms-p 등)은 문자열 동등 비교(==)로만 사용한다. 코드 변수명/속성 식별자로 직접 승격하지 않는다(하이픈은 다수 언어에서 변수명에 쓸 수 없으므로). name의 식별 단위는 catalog_id의 framework 세그먼트(예: isms-p)와 표기를 일치시켜, applies_to_{framework} 형태로 동일 제도임을 시각적으로 보장한다.",
+    "membership_semantics": "ISMS와 ISMS-P는 별도 카탈로그가 아니라 하나의 통제 풀(urn:grc:kr:isms-p)에 대한 적용 범위 차이다. applies_to_isms=true가 기본 모집단(ISMS)이며, applies_to_isms-p는 여기에 개인정보 처리 영역을 더해 확장한 집합이다. 따라서 ISMS-P 전용(개인정보) 통제는 applies_to_isms=false, applies_to_isms-p=true를 가진다. 'ISMS 80개', 'ISMS-P 101개'는 별도 파일이 아니라 이 플래그로 필터링하여 얻는다.",
+    "norm_vs_guidance_separation": "control은 규범(norm)만 담는다. 즉 판정 대상인 statement와 식별/분류/적용 메타(플래그)만 둔다. 안내서의 해설성 자료(주요 확인사항 checklist, 세부 설명 detail, 증거자료 evidence, 결함사례 defect 등)는 control이 아니라 별도 guidance 레이어에 두고 control_id로 연결한다. 따라서 이들 해설 name은 framework_meta의 allowed 사전에 포함하지 않는다.",
+    "note": "멤버십/등급/서비스 적용 여부는 직교 boolean 플래그로 표현한다. 동일 base_no를 공유하는 등급 변형(OVERLAY)이라도, 각 변형 행의 적용 등급은 level_* 플래그로 표기하여 구조 분할(COMPOSITE)과 혼선되지 않게 한다.",
+    "version_code": "버전 코드는 {연도4자리}r{차수} 형식이며 차수는 zero-padding 없이 1부터 자연수로 표기한다(2026r1, 2026r2, 2026r10). 버전 간 시간순 비교는 문자열 정렬이 아니라 'r' 뒤 차수를 정수로 파싱하여 수행한다(2026r2 < 2026r10). 정규식은 연도 4자리 + r + leading-zero 없는 자연수(^[0-9]{4}r[1-9][0-9]*$)로 강제한다."
+  },
+  "integrity_rules": {
+    "control_id_composition": "control_id 는 catalog_id + ':control:' + control_no 와 정확히 일치해야 한다.",
+    "classification_labels_are_not_references": "domain_no, group_no 는 분류 라벨이며 통제 참조가 아니다. control_id 참조 무결성 검사에서 제외한다.",
+    "denormalization_consistency": "동일 domain_no 는 항상 동일 domain_title 을, 동일 group_no 는 항상 동일 group_title 을 가져야 한다.",
+    "split_type_consistency": "split_type=ATOMIC 이면 base_no == control_no 여야 한다. split_type=OVERLAY 이면 overlay_of 는 non-null 이고 동일 base_no 를 공유하는 원본을 가리켜야 한다. split_type=COMPOSITE 이면 overlay_of 는 null 이고 동일 base_no 를 가진 형제가 둘 이상 존재해야 한다.",
+    "title_quality": "title 은 공백이 아니어야 하며 접속사(및/또는) 또는 단독 문장부호로 끝나는 추출 오류가 없어야 한다.",
+    "text_normalization": "텍스트 필드에는 사용자 정의 영역(PUA, U+E000~U+F8FF) 문자나 깨진 불릿(▶ 등)이 없어야 한다. 가운데점은 U+00B7(·)로 통일하되, 단어 결합용(수집·이용)은 공백 없이 붙이고 항목 나열 구분용은 ' · '(양옆 공백)로 표기한다.",
+    "catalog_aggregate_consistency": "catalog.framework_meta 에 집계값(total_controls 등)을 둘 경우, control 데이터에서 계산한 실제 값과 일치해야 한다."
+  },
   "frameworks": {
     "urn:grc:kr:csap": {
       "allowed_framework_meta_names": [
@@ -16,10 +40,14 @@
     },
     "urn:grc:kr:isms-p": {
       "allowed_framework_meta_names": [
-        "certification_scope",
-        "applicable_domain"
+        "applies_to_isms",
+        "applies_to_isms-p",
+        "applies_to_simplified"
       ],
-      "required_framework_meta_names": []
+      "required_framework_meta_names": [
+        "applies_to_isms",
+        "applies_to_isms-p"
+      ]
     }
   }
 }
