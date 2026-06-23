@@ -1,0 +1,904 @@
+{
+  "correlation_id": "urn:grc:kr:csap:2026r1__kr:isms-p:2023r1",
+  "source_catalog_id": "urn:grc:kr:csap:2026r1",
+  "target_catalog_id": "urn:grc:kr:isms-p:2023r1",
+  "schema_version": "v1",
+  "mappings": [
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:2.1.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.2.3",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '고용계약'은 ISMS-P '보안 서약'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:2.1.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.2.2",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '직무 분리'는 ISMS-P '직무 분리'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:2.1.4",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.2.3",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '비밀유지서약서'는 ISMS-P '보안 서약'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:2.2.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.3.2",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '외부인력 계약'은 ISMS-P '외부자 계약 시 보안'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:2.2.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.3.3",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '외부인력 보안 이행 관리'는 ISMS-P '외부자 보안 이행 관리'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:2.2.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.3.4",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '계약 만료 시 보안'은 ISMS-P '외부자 계약 변경 및 만료 시 보안'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:2.3.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.2.4",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '교육 프로그램 수립'은 ISMS-P '인식제고 및 교육훈련'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:2.3.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.2.4",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '교육 시행'은 ISMS-P '인식제고 및 교육훈련'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:2.3.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.2.4",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '평가 및 개선'은 ISMS-P '인식제고 및 교육훈련'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:3.1.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.1.3",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '자산 식별'은 ISMS-P '정보자산 관리 / 정보자산 식별'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:3.1.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:1.2.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '자산 식별'은 ISMS-P '정보자산 관리 / 정보자산 식별'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:3.1.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.1.3",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '자산별 책임 할당'은 ISMS-P '정보자산 관리'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:3.1.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.1.3",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '보안등급 및 취급'은 ISMS-P '정보자산 관리'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:5.1.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.11.1",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '침해사고 대응 절차 수립'은 ISMS-P '사고 예방 및 대응체계 구축'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:5.1.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.11.1",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '침해사고 대응 체계 구축'은 ISMS-P '사고 예방 및 대응체계 구축'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:5.2.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.11.5",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '침해사고 보고'는 ISMS-P '사고 대응 및 복구'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:5.2.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.11.5",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '침해사고 처리 및 복구'는 ISMS-P '사고 대응 및 복구'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:5.3.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.11.5",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '침해사고 분석 및 공유'는 ISMS-P '사고 대응 및 복구 / 사고 대응 훈련 및 개선'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:5.3.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.11.4",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '침해사고 분석 및 공유'는 ISMS-P '사고 대응 및 복구 / 사고 대응 훈련 및 개선'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:5.3.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.11.4",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '재발 방지'는 ISMS-P '사고 대응 훈련 및 개선'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:6.1.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.9.2",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '장애 대응절차 수립'은 ISMS-P '성능 및 장애관리'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:6.1.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.9.2",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '장애 보고'는 ISMS-P '성능 및 장애관리'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:6.1.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.9.2",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '장애 처리 및 복구'는 ISMS-P '성능 및 장애관리'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:6.1.4",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.9.2",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '재발 방지'는 ISMS-P '성능 및 장애관리'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:6.2.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.9.2",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '성능 및 용량 관리'는 ISMS-P '성능 및 장애관리'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:8.1.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.4.1",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '물리적 보호구역 지정'은 ISMS-P '보호구역 지정'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:8.1.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.4.2",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '물리적 출입통제'는 ISMS-P '출입통제'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:8.1.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.4.5",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '물리적 보호구역 내 작업'은 ISMS-P '보호구역 내 작업'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:8.1.5",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.4.6",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '모바일 기기 반출입'은 ISMS-P '반출입 기기 통제'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:8.2.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.4.3",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '정보처리시설의 배치'는 ISMS-P '정보시스템 보호'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:8.2.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.4.4",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '보호설비'는 ISMS-P '보호설비 운영'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:8.2.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.4.3",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '케이블 보호'는 ISMS-P '정보시스템 보호'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:8.2.4",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.4.4",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '시설 및 장비 유지보수'는 ISMS-P '보호설비 운영'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:8.2.5",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.4.6",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '장비 반출입'은 ISMS-P '반출입 기기 통제'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:8.2.6",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.9.7",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '장비 폐기 및 재사용'은 ISMS-P '정보자산의 재사용 및 폐기'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:9.1.5",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.10.3",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '공개서버 보안'은 ISMS-P '공개서버 보안'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:10.1.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.5.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '접근통제 정책 수립'은 ISMS-P '사용자 계정 관리 / 네트워크 접근'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:10.1.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.6.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '접근통제 정책 수립'은 ISMS-P '사용자 계정 관리 / 네트워크 접근'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:10.2.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.5.5",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '관리자 및 특수 권한관리'는 ISMS-P '특수 계정 및 권한 관리'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:10.2.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.5.6",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '접근권한 검토'는 ISMS-P '접근권한 검토'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:10.3.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.5.2",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '사용자 식별'은 ISMS-P '사용자 식별'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:10.3.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.5.3",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '사용자 인증'은 ISMS-P '사용자 인증'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:10.3.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.5.3",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '강화된 인증 수단 제공'은 ISMS-P '사용자 인증'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:10.3.4",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.5.4",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '패스워드 관리'는 ISMS-P '비밀번호 관리'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:11.1.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.6.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '네트워크 보안정책 수립'은 ISMS-P '네트워크 접근'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:11.1.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.6.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '네트워크 모니터링 및 통제'는 ISMS-P '네트워크 접근 / 보안시스템 운영'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:11.1.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.10.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '네트워크 모니터링 및 통제'는 ISMS-P '네트워크 접근 / 보안시스템 운영'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:11.1.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.10.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '네트워크 정보보호시스템 운영'은 ISMS-P '보안시스템 운영'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:11.1.5",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.6.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '네트워크 분리'는 ISMS-P '네트워크 접근'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:11.1.6",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.6.5",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '무선 접근통제'는 ISMS-P '무선 네트워크 접근'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:12.2.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.10.7",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '저장매체 관리'는 ISMS-P '보조저장매체 관리'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:12.2.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.10.7",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '이동매체 관리'는 ISMS-P '보조저장매체 관리'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:12.3.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.7.1",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '암호 정책 수립'은 ISMS-P '암호정책 적용'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:12.3.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.7.2",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '암호키 관리'는 ISMS-P '암호키 관리'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.1.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.8.1",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '보안요구사항 정의'는 ISMS-P '보안 요구사항 정의'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.1.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.8.1",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '인증 및 암호화 기능'은 ISMS-P '보안 요구사항 정의'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.1.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.8.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '보안로그 기능'은 ISMS-P '보안 요구사항 정의 / 로그 및 접속기록 관리'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.1.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.9.4",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '보안로그 기능'은 ISMS-P '보안 요구사항 정의 / 로그 및 접속기록 관리'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.1.4",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.8.1",
+      "mapping_type": "SUBSET",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '접근권한 기능'은 ISMS-P '보안 요구사항 정의'가 포괄하는 요구사항의 일부에 해당한다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.1.5",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.9.6",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '시각 동기화'는 ISMS-P '시간 동기화'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.2.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.8.2",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '구현 및 시험'은 ISMS-P '보안 요구사항 검토 및 시험'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.2.3",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.8.4",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '시험 데이터 보안'은 ISMS-P '시험 데이터 보안'과 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.2.4",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.8.5",
+      "mapping_type": "EQUIVALENT",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '소스 프로그램 보안'은 ISMS-P '소스 프로그램 관리'와 통제 목적·요구사항이 실질적으로 동등하다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.3.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.3.2",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '외주 개발 보안'은 ISMS-P '외부자 계약 시 보안 / 외부자 보안 이행 관리'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.3.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.3.3",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '외주 개발 보안'은 ISMS-P '외부자 계약 시 보안 / 외부자 보안 이행 관리'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.4.1",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.8.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '시스템 도입 계획'은 ISMS-P '보안 요구사항 정의'와 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:13.4.2",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.8.2",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '시스템 인수'는 ISMS-P '보안 요구사항 검토 및 시험'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    },
+    {
+      "source_id": "urn:grc:kr:csap:2026r1:control:14.3.5",
+      "target_id": "urn:grc:kr:isms-p:2023r1:control:2.6.1",
+      "mapping_type": "PARTIAL",
+      "provenance": "EXPERT_REVIEWED",
+      "verification_status": "DRAFT",
+      "evidence_ref": "KISA 클라우드서비스 보안인증제도 안내서(2025.02) 부록 C 보안인증기준 · 부록 D 인증평가 일부 생략의 범위",
+      "rationale": "KISA 클라우드서비스 보안인증제도 안내서 부록 C에서 ISMS 인증 시 점검 대체 가능(★) 항목으로 지정됨. CSAP '영역분리'는 ISMS-P '네트워크 접근'과 통제 범위가 부분적으로 중첩된다.",
+      "extensions": {
+        "framework_meta": [],
+        "tenant_meta": []
+      }
+    }
+  ],
+  "extensions": {
+    "framework_meta": [
+      {
+        "name": "basis",
+        "value": "csap_appendix_c_star_items"
+      },
+      {
+        "name": "source_star_count",
+        "value": "62"
+      }
+    ]
+  }
+}

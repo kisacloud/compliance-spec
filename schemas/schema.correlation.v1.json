@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://kisacloud.github.io/compliance-spec/schemas/schema.correlation.v1.json",
   "title": "correlation",
-  "description": "서로 다른 두 제도(카탈로그) 사이의 상호 인정·면제·연관 관계를 선언하는 스키마. '느슨한 결합' 원칙에 따라 통제 데이터 자체는 다른 제도의 존재를 모르며, 제도 간 관계는 오직 이 외부 레이어에서 플러그인처럼 조립된다. 실제 관계는 원자 필드인 source_catalog_id/target_catalog_id 및 각 매핑 행의 source_id/target_id가 담는다. correlation_id는 파일을 식별하는 불투명(opaque) 라벨일 뿐 파싱 대상이 아니다.",
+  "description": "서로 다른 두 제도(카탈로그) 사이의 상호 인정·면제·연관 관계를 선언하는 스키마. '느슨한 결합' 원칙에 따라 통제 데이터 자체는 다른 제도의 존재를 모르며, 제도 간 관계는 오직 이 외부 레이어에서 플러그인처럼 조립된다. 상관관계는 단방향 파일 하나로 관리하며, 역방향 관계는 별도 파일이 아니라 mapping_type 역전(SUBSET↔SUPERSET, 그 외 대칭)으로 소비 시점에 유도한다. source_catalog_id와 target_catalog_id는 서로 달라야 하고, 각 매핑의 source_id/target_id는 각각 해당 카탈로그에 속해야 한다(CI에서 강제). correlation_id는 파일 식별용 불투명 라벨일 뿐 파싱 대상이 아니다.",
   "type": "object",
   "properties": {
     "correlation_id": {
@@ -42,21 +42,39 @@
           },
           "mapping_type": {
             "type": "string",
-            "enum": ["EQUIVALENT", "SUPERSET", "SUBSET", "PARTIAL", "RELATED", "NO_EQUIVALENT"],
+            "enum": [
+              "EQUIVALENT",
+              "SUPERSET",
+              "SUBSET",
+              "PARTIAL",
+              "RELATED",
+              "NO_EQUIVALENT"
+            ],
             "description": "관계의 논리적 성격. EQUIVALENT=동등, SUPERSET=소스가 타깃을 포함, SUBSET=소스가 타깃에 포함됨, PARTIAL=부분 중첩, RELATED=관련은 있으나 포함관계 아님, NO_EQUIVALENT=대응 없음. (NIST OLIR 등 국제 매핑 어휘와 정렬되도록 중립 영어를 사용한다.)"
           },
           "provenance": {
             "type": "string",
-            "enum": ["OFFICIAL_NOTICE", "EXPERT_REVIEWED", "AI_SUGGESTED"],
+            "enum": [
+              "OFFICIAL_NOTICE",
+              "EXPERT_REVIEWED",
+              "AI_SUGGESTED"
+            ],
             "description": "이 매핑 주장의 출처 신뢰 등급. OFFICIAL_NOTICE=관보·고시 등 공식 근거, EXPERT_REVIEWED=전문가 검토, AI_SUGGESTED=AI 자동 제안(미검증). AI가 생성한 매핑이 공식 근거와 뒤섞여 후속 판단의 참값으로 오용되는 것을 막기 위해 행마다 강제 기재한다."
           },
           "verification_status": {
             "type": "string",
-            "enum": ["VERIFIED", "DRAFT", "REJECTED"],
+            "enum": [
+              "VERIFIED",
+              "DRAFT",
+              "REJECTED"
+            ],
             "description": "데이터 신뢰 라이프사이클 상태. VERIFIED=검증 완료, DRAFT=검토 중, REJECTED=기각됨."
           },
           "evidence_ref": {
-            "type": ["string", "null"],
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "주장을 뒷받침하는 공식 근거 앵커(관보 고시 번호, 보고서 서지정보 등). 근거가 없으면 null."
           },
           "rationale": {
@@ -72,10 +90,18 @@
                 "items": {
                   "type": "object",
                   "properties": {
-                    "name": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
-                    "value": { "type": "string" }
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9_-]+$"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["name", "value"],
+                  "required": [
+                    "name",
+                    "value"
+                  ],
                   "additionalProperties": false
                 }
               },
@@ -84,15 +110,26 @@
                 "items": {
                   "type": "object",
                   "properties": {
-                    "name": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
-                    "value": { "type": "string" }
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9_-]+$"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
                   },
-                  "required": ["name", "value"],
+                  "required": [
+                    "name",
+                    "value"
+                  ],
                   "additionalProperties": false
                 }
               }
             },
-            "required": ["framework_meta", "tenant_meta"],
+            "required": [
+              "framework_meta",
+              "tenant_meta"
+            ],
             "additionalProperties": false
           }
         },
@@ -118,15 +155,25 @@
           "items": {
             "type": "object",
             "properties": {
-              "name": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
-              "value": { "type": "string" }
+              "name": {
+                "type": "string",
+                "pattern": "^[a-z0-9_-]+$"
+              },
+              "value": {
+                "type": "string"
+              }
             },
-            "required": ["name", "value"],
+            "required": [
+              "name",
+              "value"
+            ],
             "additionalProperties": false
           }
         }
       },
-      "required": ["framework_meta"],
+      "required": [
+        "framework_meta"
+      ],
       "additionalProperties": false
     }
   },

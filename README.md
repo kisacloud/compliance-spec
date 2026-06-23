@@ -60,13 +60,13 @@ compliance-spec/
 
 ### 가. 카탈로그 식별자 (`catalog_id`)
 * **포맷:** `urn:grc:{region}:{framework}:{version}`
-* **정규식:** `^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}$`
+* **정규식:** `^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*$`
 * **예시:** `urn:grc:kr:csap:2026r1`
 * **version 세그먼트**(`2026r1`)는 `{연도 4자리}r{차수}` 형식입니다. 차수는 zero-padding 없이 1부터 자연수로 표기하며(예: `2026r1`, `2026r2`, `2026r10`), `r2`처럼 자연스럽게 참조할 수 있습니다. 차수는 연 단위로 리셋됩니다. **버전 시간순 비교는 문자열 정렬이 아니라 차수를 정수로 파싱하여 수행합니다**(`r` 뒤를 정수로 해석). 따라서 `2026r2 < 2026r10`이 올바르게 판정되며, 자리수 고정에 따른 상한이나 참조 시 패딩 부담이 없습니다.
 
 ### 나. 통제 항목 식별자 (`control_id`)
 * **포맷:** `{catalog_id}:control:{control_no}`
-* **정규식:** `^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[0-9]{2}:control:[a-z0-9._-]+$`
+* **정규식:** `^urn:grc:(?:[a-z]{2}|global):[a-z0-9-]+:[0-9]{4}r[1-9][0-9]*:control:[a-z0-9._-]+$`
 * **예시:** `urn:grc:kr:csap:2026r1:control:1.1.1`
 
 ### 다. 참조 무결성 제약
@@ -182,11 +182,12 @@ control_id ≡ catalog_id + ":control:" + control_no
 
 1. **1차 스키마 검증 (구조 제어):** 인입되는 모든 JSON은 `schemas/`의 v1 마스터 규칙을 100% 만족해야 합니다. `framework_meta`/`tenant_meta` 등 확장 필드는 반드시 중립 `name-value` 배열 구조여야 합니다.
 2. **2차 룰셋 검증 (내용 제어):** 스키마가 통제하지 못하는 부분은 `framework-rules.json`과 CI 스크립트가 검증합니다.
-   * 확장 필드 `name`이 허용 명사 사전에 없으면 빌드 기각.
+   * 확장 필드 `name`이 허용 명사 사전에 없으면 빌드 기각. `control`/`catalog`의 `framework_meta` 명사는 제도별 사전(`frameworks`)으로, `correlation`/`changelog`처럼 두 제도를 잇는 교차 산출물의 `framework_meta` 명사는 산출물 타입별 사전(`artifact_meta`)으로 통제합니다.
    * `control_id ≡ catalog_id + ":control:" + control_no` 합성 일치.
    * `domain_no`/`group_no`는 통제 참조가 아니므로 참조 무결성 검사에서 제외.
    * 반정규화 일관성: 같은 `domain_no`/`group_no`는 항상 같은 명칭.
    * `split_type` 일관성: `ATOMIC`이면 `base_no == control_no`; `OVERLAY`이면 `overlay_of`가 동일 `base_no`의 원본을 가리킴; `COMPOSITE`이면 `overlay_of`는 null이고 동일 `base_no` 형제가 둘 이상 존재.
    * `title` 품질: 공백이거나 접속사/문장부호로 끊긴 추출 오류 금지.
    * `catalog`의 집계값은 `control` 데이터에서 계산한 실제 값과 일치.
+   * `correlation` 무결성: `source_catalog_id ≠ target_catalog_id`이며, 각 매핑의 `source_id`/`target_id`는 각각 해당 카탈로그에 속하고 실제 통제로 실존해야 함. `placeholder`/`tbd`/`todo` 등 미완성 예약어 금지. 역방향 파일은 만들지 않고 `mapping_type` 역전으로 유도.
 3. **소문자·구분자 강제:** URN 필드에 대문자나 비표준 구분자(`#`)가 1글자라도 있으면 빌드 거부.
